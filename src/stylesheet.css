@@ -1,0 +1,95 @@
+body{
+    background-color:rgba(0, 0, 0, 0.836);
+}
+h1 {
+    font-family: 'Inconsolata', monospace;
+    font-weight: 800;
+    font-size: 40px;
+    margin-bottom: 0;
+    line-height: 1;
+}
+.weather-app {
+    display: block;
+    margin: 50px auto;
+    padding: 20px;
+    padding-top: 10px;
+    max-width: 600px;
+    border: 2px solid darkslategray;
+    text-align: center;
+    color: white;
+}
+.search {
+    padding: 0;
+    margin-bottom: 5px;
+    border: none;
+    border-radius: 5px;
+    max-width: 50%;
+    background-color: transparent;
+    border-bottom: 1px solid darkslategray;
+    color: white;
+    font-family:'Inconsolata', monospace;
+    font-weight: 100;
+    font-size: 15px;
+}
+.search-button {
+    border: 1px solid slategrey;
+    border-radius: 3px;
+    max-width: 20%;
+    background-color: transparent;
+    color: white;
+    font-family:'Inconsolata', monospace;
+    font-weight: 200;
+    font-size: 13px;
+}
+.search-button:hover {
+    background-color: white;
+    color: black;
+    font-weight: 600;
+    transition: 200ms all ease-in-out;
+    cursor: pointer;
+}
+.current-information {
+    list-style: none;
+    padding-left: 0;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-size: 13px;
+    font-weight: 100;
+    margin:0;
+    line-height: 1;
+}
+.weather-illustration {
+    font-family:'Inconsolata', monospace;
+    font-size: 45px;
+    position: relative;
+    left: 150px;
+    top: 10px;
+}
+.temperature {
+    font-family:'Inconsolata', monospace;
+    font-size: 80px;
+    font-weight: 500;
+    margin-right: 0;
+}
+.units {
+    position: relative;
+    top: -38px;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-weight: 200;
+    font-size: 15px;
+}
+.units a {
+    color: white;
+    text-decoration: none;
+}
+.units a:hover {
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+    transition: 100ms all ease-in-out;
+    cursor: pointer;
+}
+.weather-condition {
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+}
