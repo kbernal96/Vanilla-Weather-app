@@ -16,8 +16,8 @@
 <body>
     <div class="container">
         <div class="weather-app">
-            <form class="search-form">
-                <input type="text" placeholder="Search for city" class="search" id="search-bar">
+            <form id="search-form">
+                <input type="text" placeholder="Search for city" class="search" id="city-input">
                 <input type="submit" value="Search" class="search-button">
             </form>
             <div>
@@ -29,18 +29,19 @@
                         
                     </li>
                     <li id="weather-description">
-                        Cloudy
                     </li>
+                </br>
                 </ul>
                 <div class="clearfix">
-                    <span src="" class="float-left weather-illustration" id="weather-icon">☁</span>
                     <strong class="float-left temperature" id="current-temperature">
-                        63°</strong><span class="units">
+                        </strong><span class="degree">°</span>
+                        <span><img src="" class="float-left weather-illustration" id="weather-icon"></span>
+                        <span class="units">
                         <a href="" class="float-left" id="celsius">C</a> |
                         <a href="" class="float-left" id="fahrenheit">F</a>
                     </span>
 
-                     
+                
                 </div>
                 <div class="row weather-condition" id="condition">
                     <div class="col-4">

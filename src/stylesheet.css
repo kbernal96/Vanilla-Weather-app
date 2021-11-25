@@ -60,12 +60,21 @@ h1 {
 }
 .weather-illustration {
     font-family:'Inconsolata', monospace;
-    font-size: 45px;
+    max-width: 80px;
+    max-height: 70px;
     position: relative;
-    left: 150px;
-    top: 10px;
+    top: -10px;
+    left: -25px;
+    
 }
 .temperature {
+    font-family:'Inconsolata', monospace;
+    font-size: 85px;
+    font-weight: 500;
+    margin-right: 0;
+    text-align: center;
+}
+.degree {
     font-family:'Inconsolata', monospace;
     font-size: 80px;
     font-weight: 500;
@@ -73,10 +82,11 @@ h1 {
 }
 .units {
     position: relative;
-    top: -38px;
+    top: -42px;
+    left: -72px;
     font-family: 'Yanone Kaffeesatz', sans-serif;
     font-weight: 200;
-    font-size: 15px;
+    font-size: 17px;
 }
 .units a {
     color: white;

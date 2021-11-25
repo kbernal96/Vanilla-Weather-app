@@ -1,12 +1,5 @@
 
-let apiKey="18f68700369f5317f6cbee485851bf9b";
-//let city ="";
-let url=`https://api.openweathermap.org/data/2.5/find?q=New York City&units=imperial&appid=${apiKey}`;
-
-axios.get(url).then(displayTemperature);
-
 function displayTemperature(response){
-    console.log(response);
     let weatherDescription = document.querySelector("#weather-description");
     let cityName = document.querySelector("#city");
     let temperature = document.querySelector("#current-temperature");
@@ -15,6 +8,7 @@ function displayTemperature(response){
     let feelsLike = document.querySelector("#feels-like");
     let date = document.querySelector("#current-date");
     let icon = document.querySelector("#weather-icon");
+    let iconImage = response.data.list[0].weather[0].icon;
 
     weatherDescription.innerHTML = response.data.list[0].weather[0].description;
     cityName.innerHTML = response.data.list[0].name;
@@ -23,7 +17,7 @@ function displayTemperature(response){
     windSpeed.innerHTML = Math.round(response.data.list[0].wind.speed);
     feelsLike.innerHTML = Math.round(response.data.list[0].main.feels_like);
     date.innerHTML = formatDate(response.data.list[0].dt * 1000);
-    icon.setAttribute("src", "")
+    icon.setAttribute("src", `http://openweathermap.org/img/wn/${iconImage}@2x.png`);
 }
 
 function formatDate(timestamp) {
@@ -44,6 +38,25 @@ function formatDate(timestamp) {
     }
 
     return `${day}, ${hours}:${minutes}`;
-
-    
+ 
 }
+
+
+function search(city) {
+    let apiKey="18f68700369f5317f6cbee485851bf9b";
+    let url=`https://api.openweathermap.org/data/2.5/find?q=${city}&units=imperial&appid=${apiKey}`;
+
+    axios.get(url).then(displayTemperature);
+
+}
+
+function handleSubmit(event){
+    event.preventDefault();
+    let cityInput = document.querySelector("#city-input");
+    search(cityInput.value);
+}
+
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", handleSubmit);
+
+search("Paris");
