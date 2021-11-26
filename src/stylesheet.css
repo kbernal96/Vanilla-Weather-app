@@ -13,8 +13,7 @@ footer {
     color: white;
     font-size: 13px;
     font-weight: 700;
-    position: relative;
-    left: 50px;
+    text-align: center;
 }
 .weather-app {
     display: block;
