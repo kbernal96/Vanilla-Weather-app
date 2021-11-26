@@ -10,9 +10,11 @@ function displayTemperature(response){
     let icon = document.querySelector("#weather-icon");
     let iconImage = response.data.list[0].weather[0].icon;
 
+    fahrenheitTemperature = response.data.list[0].main.temp;
+
     weatherDescription.innerHTML = response.data.list[0].weather[0].description;
     cityName.innerHTML = response.data.list[0].name;
-    temperature.innerHTML = Math.round(response.data.list[0].main.temp);
+    temperature.innerHTML = Math.round(fahrenheitTemperature);
     humidityCondition.innerHTML = response.data.list[0].main.humidity;
     windSpeed.innerHTML = Math.round(response.data.list[0].wind.speed);
     feelsLike.innerHTML = Math.round(response.data.list[0].main.feels_like);
@@ -55,6 +57,37 @@ function handleSubmit(event){
     let cityInput = document.querySelector("#city-input");
     search(cityInput.value);
 }
+function toCelsius(event) {
+    event.preventDefault();
+    let temperature = document.querySelector("#current-temperature");
+    let celsiusTemperature = (fahrenheitTemperature - 32) * 5/9;
+    // remove active class from fahrenheit link
+    fahrenheitLink.classList.remove("active");
+    // add active class to celsius link
+    celsiusLink.classList.add("active");
+
+    temperature.innerHTML = Math.round(celsiusTemperature);
+
+}
+
+function toFahrenheit(event) {
+    event.preventDefault();
+    let temperature = document.querySelector("#current-temperature");
+    // remove active class from celsius link
+    celsiusLink.classList.remove("active");
+    // add active class to fahrenheot link
+    fahrenheitLink.classList.add("active");
+
+    temperature.innerHTML = Math.round(fahrenheitTemperature);
+}
+
+let fahrenheitTemperature = null;
+
+let celsiusLink = document.querySelector("#celsius");
+celsiusLink.addEventListener("click", toCelsius);
+
+let fahrenheitLink = document.querySelector("#fahrenheit");
+fahrenheitLink.addEventListener("click", toFahrenheit);
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);

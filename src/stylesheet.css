@@ -74,19 +74,13 @@ h1 {
     margin-right: 0;
     text-align: center;
 }
-.degree {
-    font-family:'Inconsolata', monospace;
-    font-size: 80px;
-    font-weight: 500;
-    margin-right: 0;
-}
 .units {
     position: relative;
     top: -42px;
     left: -72px;
     font-family: 'Yanone Kaffeesatz', sans-serif;
-    font-weight: 200;
-    font-size: 17px;
+    font-weight: 100;
+    font-size: 18px;
 }
 .units a {
     color: white;
@@ -94,10 +88,20 @@ h1 {
 }
 .units a:hover {
     color: white;
-    font-size: 20px;
-    font-weight: 600;
     transition: 100ms all ease-in-out;
     cursor: pointer;
+    text-decoration: underline;
+}
+.units .active {
+    color: slategray;
+    font-weight: 900;
+}
+
+.units .active:hover {
+    color: slategray;
+    text-decoration: none;
+    cursor: default;
+    transition: 100ms all ease-in-out;
 }
 .weather-condition {
     font-family: 'Yanone Kaffeesatz', sans-serif;
