@@ -66,25 +66,26 @@ footer {
     line-height: 1;
     text-transform: capitalize;
 }
+
 .weather-illustration {
     max-width: 80px;
     max-height: 70px;
     position: relative;
     top: -10px;
-    left: -5px;
-    
+    left: 130px;
 }
 .temperature {
     font-family:'Inconsolata', monospace;
     font-size: 85px;
     font-weight: 500;
     margin-right: 0;
-    text-align: center;
+    position: relative;
+    left: -27px;
 }
 .units {
     position: relative;
     top: -42px;
-    left: -70px;
+    right: 20px;
     font-family: 'Yanone Kaffeesatz', sans-serif;
     font-weight: 100;
     font-size: 18px;
