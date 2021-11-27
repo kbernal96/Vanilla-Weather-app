@@ -59,9 +59,9 @@ footer {
 .current-information {
     list-style: none;
     padding-left: 0;
-    font-family: 'Yanone Kaffeesatz', sans-serif;
-    font-size: 13px;
-    font-weight: 100;
+    font-family: 'Inconsolata', monospace;
+    font-size: 12px;
+    font-weight: 300;
     margin:0;
     line-height: 1;
     text-transform: capitalize;
@@ -86,8 +86,8 @@ footer {
     position: relative;
     top: -42px;
     right: 20px;
-    font-family: 'Yanone Kaffeesatz', sans-serif;
-    font-weight: 100;
+    font-family: 'Inconsolata', monospace;
+    font-weight: 600;
     font-size: 18px;
 }
 .units a {
@@ -113,8 +113,26 @@ footer {
 }
 .weather-condition {
     font-family: 'Yanone Kaffeesatz', sans-serif;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 300;
+}
+.forecast {
+    text-align: center;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-size: 18px;
+    font-weight: 200;
+}
+.icons {
+    width: 70px;
+    height: 60px;
+}
+.forecast-temperatures {
+    font-family: 'Inconsolata', monospace;
+    font-size: 15px;
+    font-weight: 400;
+}
+.high {
+    margin-right: 10px;
 }
 .source-code {
     text-decoration: none;
