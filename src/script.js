@@ -21,6 +21,36 @@ function displayTemperature(response){
     date.innerHTML = formatDate(response.data.list[0].dt * 1000);
     icon.setAttribute("src", `http://openweathermap.org/img/wn/${iconImage}@2x.png`);
 }
+function displayForecast() {
+    let forecast = document.querySelector("#weather-forecast");
+
+    //create a variable for forecast
+    let forecastHTML = `<div class="row">`;
+    let days = ["Sat", "Sun", "Mon", "Tue"]
+
+    //for loop to get forecast per day 
+    days.forEach(function(day) {
+        // define the variable; new forcastHTML to old data
+        forecastHTML = forecastHTML + 
+        `
+            <div class="col-2">
+                <div class="day">
+                    ${day}
+                </div>
+                <img class="icons" src="http://openweathermap.org/img/wn/10d@2x.png" id="forecast-icon">
+                
+                <div class="forecast-temperatures">
+                    <span class="high">66°</span>
+                    <span class="low">28°</span>
+                </div>
+            </div>
+        `;
+    })
+    
+
+    forecastHTML = forecastHTML + `</div>`;
+    forecast.innerHTML = forecastHTML; 
+}
 
 function formatDate(timestamp) {
     let date = new Date(timestamp);
@@ -93,3 +123,4 @@ let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
 
 search("Paris");
+displayForecast();
