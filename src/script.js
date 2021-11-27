@@ -1,5 +1,6 @@
 
 function displayTemperature(response){
+    console.log(response);
     let weatherDescription = document.querySelector("#weather-description");
     let cityName = document.querySelector("#city");
     let temperature = document.querySelector("#current-temperature");
@@ -12,12 +13,16 @@ function displayTemperature(response){
 
     fahrenheitTemperature = response.data.list[0].main.temp;
 
+    feels = response.data.list[0].main.feels_like;
+
+    wind = response.data.list[0].wind.speed;
+
     weatherDescription.innerHTML = response.data.list[0].weather[0].description;
     cityName.innerHTML = response.data.list[0].name;
     temperature.innerHTML = Math.round(fahrenheitTemperature);
     humidityCondition.innerHTML = response.data.list[0].main.humidity;
-    windSpeed.innerHTML = Math.round(response.data.list[0].wind.speed);
-    feelsLike.innerHTML = Math.round(response.data.list[0].main.feels_like);
+    windSpeed.innerHTML = ` ${Math.round(wind)} mph`;
+    feelsLike.innerHTML = Math.round(feels);
     date.innerHTML = formatDate(response.data.list[0].dt * 1000);
     icon.setAttribute("src", `http://openweathermap.org/img/wn/${iconImage}@2x.png`);
 }
@@ -87,10 +92,16 @@ function handleSubmit(event){
     let cityInput = document.querySelector("#city-input");
     search(cityInput.value);
 }
-function toCelsius(event) {
+function toMetric(event) {
     event.preventDefault();
     let temperature = document.querySelector("#current-temperature");
     let celsiusTemperature = (fahrenheitTemperature - 32) * 5/9;
+    let feelsLike = document.querySelector("#feels-like");
+    let feelsLikeCelsius = (feels - 32) * 5/9;
+    let windSpeed = document.querySelector("#wind");
+    let windMetric = wind * 1.609;
+    
+
     // remove active class from fahrenheit link
     fahrenheitLink.classList.remove("active");
     // add active class to celsius link
@@ -98,26 +109,40 @@ function toCelsius(event) {
 
     temperature.innerHTML = Math.round(celsiusTemperature);
 
+    feelsLike.innerHTML = Math.round(feelsLikeCelsius);
+
+    windSpeed.innerHTML = `${Math.round(windMetric)} kmh`;
 }
 
-function toFahrenheit(event) {
+function toImperial(event) {
     event.preventDefault();
     let temperature = document.querySelector("#current-temperature");
+    let feelsLike = document.querySelector("#feels-like");
+    let windSpeed = document.querySelector("#wind");
+
     // remove active class from celsius link
     celsiusLink.classList.remove("active");
     // add active class to fahrenheot link
     fahrenheitLink.classList.add("active");
 
     temperature.innerHTML = Math.round(fahrenheitTemperature);
+
+    feelsLike.innerHTML = Math.round(feels);
+    
+    windSpeed.innerHTML = `${Math.round(wind)} mph`;
 }
 
 let fahrenheitTemperature = null;
 
+let feels = null;
+
+let wind = null;
+
 let celsiusLink = document.querySelector("#celsius");
-celsiusLink.addEventListener("click", toCelsius);
+celsiusLink.addEventListener("click", toMetric);
 
 let fahrenheitLink = document.querySelector("#fahrenheit");
-fahrenheitLink.addEventListener("click", toFahrenheit);
+fahrenheitLink.addEventListener("click", toImperial);
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
