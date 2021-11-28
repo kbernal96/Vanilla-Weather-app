@@ -1,6 +1,12 @@
 
+function getForecast(coordinates) {
+    let apiKey="18f68700369f5317f6cbee485851bf9b";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=imperial`;
+
+    axios.get(apiUrl).then(displayForecast);
+}
+
 function displayTemperature(response){
-    console.log(response);
     let weatherDescription = document.querySelector("#weather-description");
     let cityName = document.querySelector("#city");
     let temperature = document.querySelector("#current-temperature");
@@ -25,8 +31,12 @@ function displayTemperature(response){
     feelsLike.innerHTML = Math.round(feels);
     date.innerHTML = formatDate(response.data.list[0].dt * 1000);
     icon.setAttribute("src", `http://openweathermap.org/img/wn/${iconImage}@2x.png`);
+
+    getForecast(response.data.list[0].coord);
 }
-function displayForecast() {
+
+function displayForecast(response) {
+    console.log(response.data.daily);
     let forecast = document.querySelector("#weather-forecast");
 
     //create a variable for forecast
@@ -148,4 +158,3 @@ let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
 
 search("Paris");
-displayForecast();
