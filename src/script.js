@@ -36,35 +36,48 @@ function displayTemperature(response){
 }
 
 function displayForecast(response) {
-    console.log(response.data.daily);
     let forecast = document.querySelector("#weather-forecast");
+    let dailyForecast = (response.data.daily);
+
+    console.log(dailyForecast.length)
 
     //create a variable for forecast
     let forecastHTML = `<div class="row">`;
-    let days = ["Sat", "Sun", "Mon", "Tue"]
 
     //for loop to get forecast per day 
-    days.forEach(function(day) {
+    dailyForecast.forEach(function(days, index) {
         // define the variable; new forcastHTML to old data
-        forecastHTML = forecastHTML + 
-        `
-            <div class="col-2">
-                <div class="day">
-                    ${day}
+        if (index < 6) {
+            forecastHTML = forecastHTML + 
+            `
+                <div class="col-2">
+                    <div class="day">
+                        ${formatForecastDay(days.dt)}
+                    </div>
+                    <img class="icons" src="http://openweathermap.org/img/wn/${days.weather[0].icon}@2x.png" id="forecast-icon">
+                    
+                    <div class="forecast-temperatures">
+                        <span class="high">${Math.round(days.temp.max)}°</span>
+                        <span class="low">${Math.round(days.temp.min)}°</span>
+                    </div>
                 </div>
-                <img class="icons" src="http://openweathermap.org/img/wn/10d@2x.png" id="forecast-icon">
-                
-                <div class="forecast-temperatures">
-                    <span class="high">66°</span>
-                    <span class="low">28°</span>
-                </div>
-            </div>
-        `;
-    })
+            `; 
+        }
+    }) 
     
 
     forecastHTML = forecastHTML + `</div>`;
     forecast.innerHTML = forecastHTML; 
+}
+
+function formatForecastDay(timestamp){
+    let date = new Date(timestamp * 1000);
+
+    let day = ["Sun", "Mon", "Tues", "Wed", "Thur", "Fri", "Sat"];
+
+    day = day[date.getDay()];
+
+    return day;
 }
 
 function formatDate(timestamp) {
