@@ -1,5 +1,5 @@
 body{
-    background-color:rgba(0, 0, 0, 0.836);
+  background-color:rgba(0, 0, 0, 0.836);
 }
 h1 {
     font-family: 'Inconsolata', monospace;
@@ -22,9 +22,10 @@ footer {
     padding: 20px;
     padding-top: 10px;
     max-width: 600px;
-    border: 2px solid darkslategray;
+    border: 2px solid olive;
     text-align: center;
-    color: white;
+    color: snow;
+    background-color:rgba(0, 0, 0, 0.301);
 }
 .search {
     padding: 0;
@@ -33,21 +34,21 @@ footer {
     border-radius: 5px;
     max-width: 50%;
     background-color: transparent;
-    border-bottom: 1px solid darkslategray;
-    color: white;
+    border-bottom: 2px solid darkslategray;
+    color: ghostwhite;
     font-family:'Inconsolata', monospace;
-    font-weight: 100;
+    font-weight: 200;
     font-size: 15px;
 }
 .search-button {
-    border: 1px solid slategrey;
+    border: 2px solid darkslategrey;
     border-radius: 3px;
     max-width: 20%;
     background-color: transparent;
     color: white;
     font-family:'Inconsolata', monospace;
-    font-weight: 200;
-    font-size: 13px;
+    font-weight: 300;
+    font-size: 15px;
 }
 .search-button:hover {
     background-color: white;

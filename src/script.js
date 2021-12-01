@@ -17,11 +17,19 @@ function displayTemperature(response){
     let icon = document.querySelector("#weather-icon");
     let iconImage = response.data.list[0].weather[0].icon;
 
+    
+    //global variables because they are used in the metric and imperial functions
     fahrenheitTemperature = response.data.list[0].main.temp;
 
     feels = response.data.list[0].main.feels_like;
 
     wind = response.data.list[0].wind.speed;
+
+     // remove active class from celsius link
+     celsiusLink.classList.remove("active");
+     // add active class to fahrenheot link
+     fahrenheitLink.classList.add("active");
+    
 
     weatherDescription.innerHTML = response.data.list[0].weather[0].description;
     cityName.innerHTML = response.data.list[0].name;
@@ -39,8 +47,8 @@ function displayForecast(response) {
     let forecast = document.querySelector("#weather-forecast");
     let dailyForecast = (response.data.daily);
 
-    console.log(dailyForecast.length)
-
+    console.log(response.data.daily);
+    
     //create a variable for forecast
     let forecastHTML = `<div class="row">`;
 
@@ -125,7 +133,7 @@ function toMetric(event) {
     let windMetric = wind * 1.609;
     
 
-    // remove active class from fahrenheit link
+    //remove active class from fahrenheit link
     fahrenheitLink.classList.remove("active");
     // add active class to celsius link
     celsiusLink.classList.add("active");
